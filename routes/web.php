@@ -19,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front_end.home');
 });
+Route::get('/product', function () {
+    return view('front_end.pages.product');
+});
