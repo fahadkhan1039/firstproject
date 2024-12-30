@@ -1028,3 +1028,5 @@
 @endsection
 @push('js')
 @endpush
+@push('js')
+@endpush
