@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front_end.home');
 });
+// ->middleware('check')
 Route::get('/product', function () {
     return view('front_end.pages.product');
 })->name('pro');
