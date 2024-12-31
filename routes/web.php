@@ -21,4 +21,6 @@ Route::get('/', function () {
 });
 Route::get('/product', function () {
     return view('front_end.pages.product');
-});
+})->name('pro');
+
+route :: redirect('/single-product' , '/product');

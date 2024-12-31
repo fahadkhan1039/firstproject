@@ -74,7 +74,7 @@
                   </a>
                 </li>
                 <li class="hover-effect-opacity px-2 mx-n2">
-                  <a class="dropdown-item d-block mb-0" href="home-cars.html">
+                  <a class="dropdown-item d-block mb-0" href="{{route('pro')}}">
                     <span class="fw-medium">Cars</span>
                     <span class="d-block fs-xs text-body-secondary">Vehicle sales listings</span>
                     <div
@@ -93,7 +93,7 @@
                   </a>
                 </li>
                 <li class="hover-effect-opacity px-2 mx-n2">
-                  <a class="dropdown-item d-block mb-0" href="home-contractors.html">
+                  <a class="dropdown-item d-block mb-0" href="{{route('pro')}}">
                     <span class="fw-medium">Contractors</span>
                     <span class="d-block fs-xs text-body-secondary">Professional services directory</span>
                     <div
