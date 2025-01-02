@@ -101,12 +101,14 @@
 @endsection
 
 @push('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 <script>
     @if(session('success'))
         Swal.fire({
             icon: 'success',
             title: 'Success!',
             text: '{{ session('success') }}',
+            confirmButtonColor: '#4CAF50',
         });
     @endif
 
@@ -115,6 +117,7 @@
             icon: 'info',
             title: 'Info!',
             text: '{{ session('info') }}',
+            confirmButtonColor: '#3085d6',
         });
     @endif
 </script>
