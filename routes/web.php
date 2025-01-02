@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('front_end.home');
 });
 // ->middleware('check')
-Route::get('/product', function () {
-    return view('front_end.pages.product');
-})->name('pro');
+Route::get('/home', function () {
+    return view('admin.layout.app');
+});
 
-route :: redirect('/single-product' , '/product');
+// route :: redirect('/single-product' , '/product');
