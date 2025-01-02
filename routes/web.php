@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 // ->middleware('check')
 Route::get('/home', function () {
-    return view('admin.layout.app');
+    return view('admin.dashboard');
 });
 
 // route :: redirect('/single-product' , '/product');

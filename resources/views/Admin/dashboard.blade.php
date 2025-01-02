@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin.layout.app')
 @section('title', 'Admin')
 
 @section('content')
@@ -167,6 +167,7 @@
                             </svg>
                         </span>
                         <!--end::Svg Icon-->New Member</a>
+
                     </div>
                 </div>
                 <!--end::Header-->
