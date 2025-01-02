@@ -42,3 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+use Illuminate\Database\Eloquent\Model;
+
+class data extends Model
+{
+    use HasFactory;
+}
