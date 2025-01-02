@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -33,4 +34,18 @@ class UserController extends Controller
         // Redirect with success message
         return redirect()->back()->with('success', 'User created successfully!');
     }
+    public function view_all_user(Request $request)
+    {
+        if ($request->ajax()) {
+            // Retrieve all users
+            $data = User::all(); // Use `all()` or any query to fetch data
+    
+            // Return the data as JSON
+            return response()->json(['data' => $data]);
+        }
+        
+        return view('admin.pages.AllUserData');
+    }
+    
+    
 }
