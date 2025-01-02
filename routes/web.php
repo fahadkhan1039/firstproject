@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,9 @@ Route::get('/home', function () {
 });
 
 // route :: redirect('/single-product' , '/product');
+
+
+
+
+
+Route::post('/users', [UserController::class, 'data'])->name('users.data');

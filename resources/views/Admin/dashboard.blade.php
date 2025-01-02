@@ -29,7 +29,8 @@
                     <h5 class="card-title mb-0">Add New User</h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" >
+                    <form method="POST" action="{{ route('users.data') }}">
+
                         @csrf
                         <div class="row">
                             <!-- Name Field -->
@@ -50,6 +51,18 @@
                                     <label for="email">Email</label>
                                     <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email" value="{{ old('email') }}">
                                     @error('email')
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                             <!-- Phone Number Field -->
+                             <div class="col-md-12 my-3">
+                                <div class="form-group custom-form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter your phone number" value="{{ old('phone') }}">
+                                    @error('phone')
                                         <span class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                         </span>
