@@ -158,7 +158,7 @@
                         <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span>
                     </h3>
                     <div class="card-toolbar">
-                        <a href="#" class="btn btn-sm btn-light-primary">
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#userFormModal" class="btn btn-sm btn-light-primary">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                         <span class="svg-icon svg-icon-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -167,7 +167,44 @@
                             </svg>
                         </span>
                         <!--end::Svg Icon-->New Member</a>
-
+                        <div class="modal fade" id="userFormModal" tabindex="-1" aria-labelledby="userFormModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary text-white">
+                                        <h5 class="modal-title" id="userFormModalLabel">Insert User Data</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="userForm">
+                                            <!-- Name Field -->
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                                            </div>
+                                            <!-- Email Field -->
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                                            </div>
+                                            <!-- Password Field -->
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                                            </div>
+                                            <!-- Phone Field -->
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                                            </div>
+                                            <!-- Submit Button -->
+                                            <div class="d-grid">
+                                                <button type="button" class="btn btn-primary" id="submitForm">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--end::Header-->
