@@ -37,15 +37,28 @@ class UserController extends Controller
     public function view_all_user(Request $request)
     {
         if ($request->ajax()) {
-            // Retrieve all users
-            $data = User::all(); // Use `all()` or any query to fetch data
+            // Retrieve all users without filtering by role
+            $data = User::orderBy('id', 'DESC')->get();
     
-            // Return the data as JSON
-            return response()->json(['data' => $data]);
+            return Datatables::of($data)
+                ->addColumn('action', function($data) {
+                    $editUrl = route('edit-user', $data->id);
+                    $deleteUrl = route('del-user', $data->id);
+    
+                    return '
+                        <a href="'.$editUrl.'" class="btn btn-sm edit_data text-white" style="background-color: #000 !important; color:white">
+                            <i class="ri-edit-line"></i>
+                        </a>
+                        <a href="'.$deleteUrl.'" class="btn btn-danger btn-sm">
+                            <i class="ri-chat-delete-line"></i>
+                        </a>
+                    ';
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
-        
+    
         return view('admin.pages.AllUserData');
     }
-    
     
 }
