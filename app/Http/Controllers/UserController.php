@@ -23,6 +23,8 @@ class UserController extends Controller
             'password.confirmed' => 'Passwords do not match.',
         ]);
 
+        // var_dump($validatedData['phone']);
+        // exit();
         // Create a new user record
         User::create([
             'name' => $validatedData['name'],
@@ -39,7 +41,6 @@ class UserController extends Controller
     if ($request->ajax()) {
         // Retrieve all users without filtering by role
         $data = User::orderBy('id', 'DESC')->get();
-
         return Datatables::of($data)
             ->addColumn('action', function($data) {
                 $editUrl = route('edit-user', $data->id);

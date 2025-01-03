@@ -31,4 +31,4 @@ Route::get('/home', function () {
 
 
 Route::post('/users', [UserController::class, 'data'])->name('users.data');
-Route::get('/view-all-user',[UserController::class,'view_all_user'])->name('view-all-user');
+Route::get('/view_all_user',[UserController::class,'view_all_user'])->name('view_all_user');

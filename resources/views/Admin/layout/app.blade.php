@@ -8271,6 +8271,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('assets/admin/js/custom/utilities/modals/users-search.js') }}"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
+    @stack('js')
 </body>
 <!--end::Body-->
 
