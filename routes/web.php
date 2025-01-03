@@ -31,4 +31,6 @@ Route::get('/home', function () {
 
 
 Route::post('/users', [UserController::class, 'data'])->name('users.data');
-Route::get('/view_all_user',[UserController::class,'view_all_user'])->name('view_all_user');
+Route::get('/view_all_user', [UserController::class, 'view_all_user'])->name('view_all_user');
+Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit-user');
+Route::delete('/del-user/{id}', [UserController::class, 'destroy'])->name('del-user');
