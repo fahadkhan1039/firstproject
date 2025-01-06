@@ -25,12 +25,10 @@ Route::get('/home', function () {
 });
 
 // route :: redirect('/single-product' , '/product');
-
-
-
-
-
-Route::post('/users', [UserController::class, 'data'])->name('users.data');
-Route::get('/view_all_user', [UserController::class, 'view_all_user'])->name('view_all_user');
-Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('edit-user');
-Route::delete('/del-user/{id}', [UserController::class, 'destroy'])->name('del-user');
+// routes/web.php
+// Routes for viewing, editing, updating, and deleting users
+Route::get('/users', [UserController::class, 'view_all_user'])->name('users.view_all_user');
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+Route::post('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+Route::post('/users/create', [UserController::class, 'data'])->name('users.create');

@@ -54159,9 +54159,9 @@ body {
 }
 
 @media (min-width:992px) {
-    .content {
+    /* .content {
         padding: 30px 0
-    }
+    } */
 
     .toolbar-enabled:not(.toolbar-fixed) .content {
         padding-top: 0

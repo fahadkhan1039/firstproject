@@ -14,9 +14,14 @@
                         <div class="btn btn-icon btn-flex btn-active-color-primary" id="kt_docs_aside_toggle">
                             <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
                             <span class="svg-icon svg-icon-1 mt-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="currentColor" />
-                                    <path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="currentColor" />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3"
+                                        d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
+                                        fill="currentColor" />
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
@@ -26,7 +31,8 @@
                     <!--begin::Logo-->
                     <div class="d-flex d-lg-none align-items-center flex-grow-1 flex-lg-grow-0 me-3 me-lg-15">
                         <a href="../../demo1/dist/index.html">
-                            <img alt="Logo" src="assets/admin/media/logos/logo-1.svg" class="d-none d-lg-block h-25px" />
+                            <img alt="Logo" src="assets/admin/media/logos/logo-1.svg"
+                                class="d-none d-lg-block h-25px" />
                             <img alt="Logo" src="assets/admin/media/logos/logo-2.svg" class="d-lg-none h-35px" />
                         </a>
                     </div>
@@ -36,10 +42,14 @@
                         <!--begin::Header title-->
                         <div class="d-flex align-items-center" id="kt_docs_header_title">
                             <!--begin::Page title-->
-                            <div class="docs-page-title d-flex flex-column flex-lg-row align-items-lg-center py-5 mb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_docs_content_container', 'lg': '#kt_docs_header_title'}">
+                            <div class="docs-page-title d-flex flex-column flex-lg-row align-items-lg-center py-5 mb-lg-0"
+                                data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                                data-kt-swapper-parent="{default: '#kt_docs_content_container', 'lg': '#kt_docs_header_title'}">
                                 <!--begin::Title-->
                                 <h1 class="d-flex align-items-center text-dark my-1 fs-4">Documentation
-                                <a href="../../demo1/dist/documentation/getting-started/changelog.html" class="badge fw-bold fs-9 px-2 ms-2 badge-white text-hover-primary shadow-sm">v8.0.38</a></h1>
+                                    <a href="../../demo1/dist/documentation/getting-started/changelog.html"
+                                        class="badge fw-bold fs-9 px-2 ms-2 badge-white text-hover-primary shadow-sm">v8.0.38</a>
+                                </h1>
                                 <!--end::Title-->
                                 <!--begin::Separator-->
                                 <span class="d-none d-lg-block bullet h-20px w-1px bg-secondary mx-4"></span>
@@ -65,9 +75,8 @@
                         <!--end::Header title-->
                         <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                             <!--begin::Menu wrapper-->
-                            <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
-                                data-kt-menu-trigger="click" data-kt-menu-attach="parent"
-                                data-kt-menu-placement="bottom-end">
+                            <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+                                data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                                 <img src="assets/admin/media/avatars/300-1.jpg" alt="user" />
                             </div>
                             <!--begin::User account menu-->
@@ -99,18 +108,15 @@
                                 <!--end::Menu separator-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="../../demo1/dist/account/overview.html"
-                                        class="menu-link px-5">My Profile</a>
+                                    <a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="../../demo1/dist/apps/projects/list.html"
-                                        class="menu-link px-5">
+                                    <a href="../../demo1/dist/apps/projects/list.html" class="menu-link px-5">
                                         <span class="menu-text">My Projects</span>
                                         <span class="menu-badge">
-                                            <span
-                                                class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
+                                            <span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
                                         </span>
                                     </a>
                                 </div>
@@ -146,8 +152,7 @@
                                         <div class="menu-item px-3">
                                             <a href="../../demo1/dist/account/statements.html"
                                                 class="menu-link d-flex flex-stack px-5">Statements
-                                                <i class="fas fa-exclamation-circle ms-2 fs-7"
-                                                    data-bs-toggle="tooltip"
+                                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                                     title="View your statements"></i></a>
                                         </div>
                                         <!--end::Menu item-->
@@ -157,13 +162,10 @@
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
                                             <div class="menu-content px-3">
-                                                <label
-                                                    class="form-check form-switch form-check-custom form-check-solid">
-                                                    <input class="form-check-input w-30px h-20px"
-                                                        type="checkbox" value="1" checked="checked"
-                                                        name="notifications" />
-                                                    <span
-                                                        class="form-check-label text-muted fs-7">Notifications</span>
+                                                <label class="form-check form-switch form-check-custom form-check-solid">
+                                                    <input class="form-check-input w-30px h-20px" type="checkbox"
+                                                        value="1" checked="checked" name="notifications" />
+                                                    <span class="form-check-label text-muted fs-7">Notifications</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -174,8 +176,8 @@
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="../../demo1/dist/account/statements.html"
-                                        class="menu-link px-5">My Statements</a>
+                                    <a href="../../demo1/dist/account/statements.html" class="menu-link px-5">My
+                                        Statements</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu separator-->
@@ -200,8 +202,7 @@
                                                 class="menu-link d-flex px-5 active">
                                                 <span class="symbol symbol-20px me-4">
                                                     <img class="rounded-1"
-                                                        src="assets/admin/media/flags/united-states.svg"
-                                                        alt="" />
+                                                        src="assets/admin/media/flags/united-states.svg" alt="" />
                                                 </span>English</a>
                                         </div>
                                         <!--end::Menu item-->
@@ -210,8 +211,8 @@
                                             <a href="../../demo1/dist/account/settings.html"
                                                 class="menu-link d-flex px-5">
                                                 <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1"
-                                                        src="assets/admin/media/flags/spain.svg" alt="" />
+                                                    <img class="rounded-1" src="assets/admin/media/flags/spain.svg"
+                                                        alt="" />
                                                 </span>Spanish</a>
                                         </div>
                                         <!--end::Menu item-->
@@ -220,8 +221,7 @@
                                             <a href="../../demo1/dist/account/settings.html"
                                                 class="menu-link d-flex px-5">
                                                 <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1"
-                                                        src="assets/admin/media/flags/germany.svg"
+                                                    <img class="rounded-1" src="assets/admin/media/flags/germany.svg"
                                                         alt="" />
                                                 </span>German</a>
                                         </div>
@@ -231,8 +231,8 @@
                                             <a href="../../demo1/dist/account/settings.html"
                                                 class="menu-link d-flex px-5">
                                                 <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1"
-                                                        src="assets/admin/media/flags/japan.svg" alt="" />
+                                                    <img class="rounded-1" src="assets/admin/media/flags/japan.svg"
+                                                        alt="" />
                                                 </span>Japanese</a>
                                         </div>
                                         <!--end::Menu item-->
@@ -241,8 +241,7 @@
                                             <a href="../../demo1/dist/account/settings.html"
                                                 class="menu-link d-flex px-5">
                                                 <span class="symbol symbol-20px me-4">
-                                                    <img class="rounded-1"
-                                                        src="assets/admin/media/flags/france.svg"
+                                                    <img class="rounded-1" src="assets/admin/media/flags/france.svg"
                                                         alt="" />
                                                 </span>French</a>
                                         </div>
@@ -253,8 +252,8 @@
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5 my-1">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link px-5">Account Settings</a>
+                                    <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
+                                        Settings</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
@@ -272,9 +271,8 @@
                                         <label
                                             class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
                                             for="kt_user_menu_dark_mode_toggle">
-                                            <input class="form-check-input w-30px h-20px" type="checkbox"
-                                                value="1" name="mode"
-                                                id="kt_user_menu_dark_mode_toggle"
+                                            <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
+                                                name="mode" id="kt_user_menu_dark_mode_toggle"
                                                 data-kt-url="../../demo1/dist/index.html" />
                                             <span class="pulse-ring ms-n1"></span>
                                             <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
@@ -303,66 +301,27 @@
                     <!--begin::Header-->
                     <div class="card-header border-0 pt-5">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">New Products</span>
-                            <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span>
+                            <span class="card-label fw-bolder fs-3 mb-1">ALl Users</span>
+                            {{-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> --}}
                         </h3>
                         <div class="card-toolbar">
-                            <a data-bs-toggle="modal" data-bs-target="#userFormModal" class="btn btn-sm btn-light-primary">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                <span class="svg-icon svg-icon-2">
+                            <div class="d-flex align-items-center position-relative my-1">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                                <span class="svg-icon svg-icon-3 position-absolute ms-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none">
-                                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2"
-                                            rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
-                                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
-                                            fill="currentColor" />
+                                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                            rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor">
+                                        </rect>
+                                        <path
+                                            d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                            fill="currentColor"></path>
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->New Member</a>
-                            <div class="modal fade" id="userFormModal" tabindex="-1"
-                                aria-labelledby="userFormModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-primary text-white">
-                                            <h5 class="modal-title" id="userFormModalLabel">Insert User Data</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="userForm">
-                                                <!-- Name Field -->
-                                                <div class="mb-3">
-                                                    <label for="name" class="form-label">Name</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        name="name" placeholder="Enter your name" required>
-                                                </div>
-                                                <!-- Email Field -->
-                                                <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="email"
-                                                        name="email" placeholder="Enter your email" required>
-                                                </div>
-                                                <!-- Password Field -->
-                                                <div class="mb-3">
-                                                    <label for="password" class="form-label">Password</label>
-                                                    <input type="password" class="form-control" id="password"
-                                                        name="password" placeholder="Enter your password" required>
-                                                </div>
-                                                <!-- Phone Field -->
-                                                <div class="mb-3">
-                                                    <label for="phone" class="form-label">Phone</label>
-                                                    <input type="tel" class="form-control" id="phone"
-                                                        name="phone" placeholder="Enter your phone number" required>
-                                                </div>
-                                                <!-- Submit Button -->
-                                                <div class="d-grid">
-                                                    <button type="button" class="btn btn-primary"
-                                                        id="submitForm">Submit</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--end::Svg Icon-->
+                                <input type="text" id="search"
+                                    class="form-control form-control-solid form-select-sm w-250px ps-9"
+                                    placeholder="Search Order">
                             </div>
                         </div>
                     </div>
@@ -381,7 +340,7 @@
                                         <th class="p-0 min-w-150px">Name</th>
                                         <th class="p-0 min-w-200px">Email</th>
                                         <th class="p-0 min-w-150px">Phone</th>
-                                        <th class="p-0 min-w-100px text-end">Actions</th>
+                                        <th class="p-0 min-w-100px ">Actions</th>
                                     </tr>
                                 </thead>
                                 <!--end::Table head-->
@@ -401,56 +360,148 @@
         </div>
         <!--end::Post-->
     </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="updateForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="edit_id">
+                        <div class="mb-3">
+                            <label for="edit_name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="edit_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="edit_email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="edit_phone" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 @push('js')
+    <!-- Include SweetAlert2 for confirmation popup -->
+
     <script>
         $(document).ready(function() {
+            // Initialize DataTable
             var table = $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: {
-                    url: "{{ route('view_all_user') }}",
-                    type: 'GET'
-                },
+                ajax: '{{ route('users.view_all_user') }}',
                 columns: [{
-                        data: 'id',
-                        name: 'id'
+                        data: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'name'
                     },
                     {
-                        data: 'email',
-                        name: 'email'
+                        data: 'email'
                     },
                     {
-                        data: 'phone',
-                        name: 'phone'
+                        data: 'phone'
                     },
                     {
                         data: 'action',
-                        name: 'action',
                         orderable: false,
                         searchable: false
                     }
-                ],
-                "createdRow": function(row, data, dataIndex) {
-                    var start = table.page.info().start;
-                    var incrementedId = start + dataIndex + 1;
-                    $('td', row).eq(0).html(incrementedId);
-                },
-                responsive: true,
-                pageLength: 10,
-                language: {
-                    processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>',
-                    emptyTable: "No data available in table"
-                }
+                ]
             });
 
-            $('#search').on('keyup', function() {
-                table.search(this.value).draw();
+            // Edit button click
+            $(document).on('click', '.edit-btn', function() {
+                var userId = $(this).data('id');
+                $.ajax({
+                    url: '/users/edit/' + userId,
+                    method: 'GET',
+                    success: function(response) {
+                        $('#userId').val(response.id);
+                        $('#name').val(response.name);
+                        $('#email').val(response.email);
+                        $('#phone').val(response.phone);
+                        $('#editModal').modal('show');
+                    }
+                });
+            });
+
+            // Update user
+            $('#editForm').on('submit', function(e) {
+                e.preventDefault();
+                var userId = $('#userId').val();
+                $.ajax({
+                    url: '/users/update/' + userId,
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        phone: $('#phone').val()
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Updated!', response.message, 'success');
+                            table.ajax.reload();
+                            $('#editModal').modal('hide');
+                        } else {
+                            Swal.fire('Error!', response.message, 'error');
+                        }
+                    }
+                });
+            });
+
+            // Delete button click
+            $(document).on('click', '.delete-btn', function() {
+                var userId = $(this).data('id');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/users/delete/' + userId,
+                            method: 'POST',
+                            data: {
+                                _token: '{{ csrf_token() }}',
+                                _method: 'POST'
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire('Deleted!', response.message, 'success');
+                                    table.ajax.reload();
+                                } else {
+                                    Swal.fire('Error!', response.message, 'error');
+                                }
+                            },
+                            error: function() {
+                                Swal.fire('Error!',
+                                    'An error occurred while deleting the user.',
+                                    'error');
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>
