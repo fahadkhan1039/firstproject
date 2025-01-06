@@ -32,3 +32,43 @@ Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edi
 Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
 Route::post('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 Route::post('/users/create', [UserController::class, 'data'])->name('users.create');
+
+
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+// use Illuminate\Support\Facades\Route;
+
+// Register routes
+Route::get('register', [RegisteredUserController::class, 'create'])
+    ->middleware('guest')
+    ->name('register');
+
+Route::post('register', [RegisteredUserController::class, 'store'])
+    ->middleware('guest');
+
+// Login routes
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('login');
+
+Route::post('login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest');
+
+// Logout route
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
+
+// Home (Dashboard) route
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+
+Route::get('signin', [AuthenticatedSessionController::class, 'create'])
+    ->middleware('guest')
+    ->name('signin');
+
+Route::post('signin', [AuthenticatedSessionController::class, 'store'])
+    ->middleware('guest');
