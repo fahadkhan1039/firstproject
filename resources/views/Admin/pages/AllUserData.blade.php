@@ -362,7 +362,7 @@
     </div>
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm " style="max-width: 50%; ">
             <div class="modal-content">
                 <form id="updateForm">
                     <div class="modal-header">
@@ -370,18 +370,31 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" id="edit_id">
-                        <div class="mb-3">
-                            <label for="edit_name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="edit_name" required>
+                        <!-- Hidden input for ID -->
+                        <input type="hidden" id="edit_id" name="id">
+    
+                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                <span class="required">Name</span>
+                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a target name for future usage and reference" data-bs-original-title="Specify a target name for future usage and reference" data-kt-initialized="1">
+                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Name" id="edit_name" name="name" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="edit_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="edit_email" required>
+    
+                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                <span class="required">Email</span>
+                            </label>
+                            <input type="email" class="form-control form-control-solid" placeholder="Enter Your Email" id="edit_email" name="email" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="edit_phone" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="edit_phone" required>
+    
+                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                <span class="required">Phone</span>
+                            </label>
+                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Phone Number" id="edit_phone" name="phone" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -392,8 +405,7 @@
             </div>
         </div>
     </div>
-
-
+    
 @endsection
 @push('js')
     <!-- Include SweetAlert2 for confirmation popup -->
@@ -429,17 +441,24 @@
             $(document).on('click', '.edit-btn', function() {
                 var userId = $(this).data('id');
                 $.ajax({
-                    url: '/users/edit/' + userId,
+                    url: '/users/edit/' + userId, // Backend endpoint for fetching user data
                     method: 'GET',
                     success: function(response) {
-                        $('#userId').val(response.id);
-                        $('#name').val(response.name);
-                        $('#email').val(response.email);
-                        $('#phone').val(response.phone);
+                        // Assuming response is an object with properties: id, name, email, and phone
+                        $('#edit_id').val(response.id); // Correct ID for hidden input
+                        $('#edit_name').val(response.name);
+                        $('#edit_email').val(response.email);
+                        $('#edit_phone').val(response.phone);
+
+                        // Show the modal
                         $('#editModal').modal('show');
+                    },
+                    error: function() {
+                        alert('Failed to fetch user data. Please try again.');
                     }
                 });
             });
+
 
             // Update user
             $('#editForm').on('submit', function(e) {

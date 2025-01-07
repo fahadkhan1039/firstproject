@@ -2,30 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Home Route
 Route::get('/', function () {
     return view('front_end.home');
 });
-// ->middleware('check')
+
+// Admin Dashboard Route
 Route::get('/home', function () {
     return view('admin.dashboard');
 });
 
-// route :: redirect('/single-product' , '/product');
-// routes/web.php
 // Routes for viewing, editing, updating, and deleting users
 Route::get('/users', [UserController::class, 'view_all_user'])->name('users.view_all_user');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
@@ -33,70 +34,31 @@ Route::post('/users/update/{id}', [UserController::class, 'update'])->name('user
 Route::post('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 Route::post('/users/create', [UserController::class, 'data'])->name('users.create');
 
-
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-// use Illuminate\Support\Facades\Route;
-
-// Register routes
+// Register Routes
 Route::get('register', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
     ->name('register');
-
 Route::post('register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
-// Login routes
+// Login Routes
 Route::get('login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
     ->name('login');
-
 Route::post('login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest');
 
-// Logout route
+// Logout Route
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
-// Home (Dashboard) route
+// Dashboard Route
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-
-Route::get('signin', [AuthenticatedSessionController::class, 'create'])
-    ->middleware('guest')
-    ->name('signin');
-
-Route::post('signin', [AuthenticatedSessionController::class, 'store'])
-    ->middleware('guest');
-
-
-    use App\Http\Controllers\ProfileController;
-// use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Auth\AuthenticatedSessionController;
-// use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\VerifyEmailController;
-
-// Authentication Routes...
-Route::get('login', [AuthenticatedSessionController::class, 'create'])
-    ->name('login');
-Route::post('login', [AuthenticatedSessionController::class, 'store']);
-Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
-
-// Registration Routes...
-Route::get('register', [RegisteredUserController::class, 'create'])
-    ->name('register');
-Route::post('register', [RegisteredUserController::class, 'store']);
-
-// Password Reset Routes...
+// Password Reset Routes
 Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
     ->name('password.request');
 Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
@@ -106,7 +68,7 @@ Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
 Route::post('reset-password', [NewPasswordController::class, 'store'])
     ->name('password.update');
 
-// Email Verification Routes...
+// Email Verification Routes
 Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
     ->name('verification.notice');
 Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
@@ -114,7 +76,7 @@ Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'
 Route::post('email/verification-notification', [EmailVerificationPromptController::class, 'store'])
     ->name('verification.send');
 
-// Profile Routes...
+// Profile Routes
 Route::get('/user/profile', [ProfileController::class, 'edit'])
     ->middleware('auth')
     ->name('profile.edit');
