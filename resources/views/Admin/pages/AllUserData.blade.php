@@ -301,7 +301,7 @@
                     <!--begin::Header-->
                     <div class="card-header border-0 pt-5">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">ALl Users</span>
+                            <span class="card-label fw-bolder fs-3 mb-1">ALL Users</span>
                             {{-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> --}}
                         </h3>
                         <div class="card-toolbar">
@@ -372,29 +372,37 @@
                     <div class="modal-body">
                         <!-- Hidden input for ID -->
                         <input type="hidden" id="edit_id" name="id">
-    
+
                         <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Name</span>
-                                <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a target name for future usage and reference" data-bs-original-title="Specify a target name for future usage and reference" data-kt-initialized="1">
-                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                <span class="ms-1" data-bs-toggle="tooltip"
+                                    aria-label="Specify a target name for future usage and reference"
+                                    data-bs-original-title="Specify a target name for future usage and reference"
+                                    data-kt-initialized="1">
+                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
+                                            class="path1"></span><span class="path2"></span><span
+                                            class="path3"></span></i>
                                 </span>
                             </label>
-                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Name" id="edit_name" name="name" required>
+                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Name"
+                                id="edit_name" name="name" required>
                         </div>
-    
+
                         <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Email</span>
                             </label>
-                            <input type="email" class="form-control form-control-solid" placeholder="Enter Your Email" id="edit_email" name="email" required>
+                            <input type="email" class="form-control form-control-solid" placeholder="Enter Your Email"
+                                id="edit_email" name="email" required>
                         </div>
-    
+
                         <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Phone</span>
                             </label>
-                            <input type="text" class="form-control form-control-solid" placeholder="Enter Your Phone Number" id="edit_phone" name="phone" required>
+                            <input type="text" class="form-control form-control-solid"
+                                placeholder="Enter Your Phone Number" id="edit_phone" name="phone" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -405,7 +413,7 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
 @push('js')
     <!-- Include SweetAlert2 for confirmation popup -->
@@ -434,8 +442,24 @@
                         orderable: false,
                         searchable: false
                     }
-                ]
+                ],
+                "createdRow": function(row, data, dataIndex) {
+                    var start = table.page.info().start;
+                    var incrementedId = start + dataIndex + 1;
+                    $('td', row).eq(0).html(incrementedId);
+                },
+                responsive: true,
+                pageLength: 10,
+                language: {
+                    processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+                }
             });
+
+
+            $('#search').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
 
             // Edit button click
             $(document).on('click', '.edit-btn', function() {

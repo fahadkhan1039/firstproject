@@ -15,7 +15,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|digits:11|unique:users,phone',
+            'phone' => 'required|digits:11', // Removed 'unique:users,phone'
             'password' => 'required|confirmed|min:8',
         ], [
             'name.required' => 'Name is required.',
@@ -23,7 +23,7 @@ class UserController extends Controller
             'phone.digits' => 'Phone number must be exactly 11 digits.',
             'password.confirmed' => 'Passwords do not match.',
         ]);
-
+    
         // Create a new user record
         User::create([
             'name' => $validatedData['name'],
@@ -31,11 +31,11 @@ class UserController extends Controller
             'phone' => $validatedData['phone'],
             'password' => bcrypt($validatedData['password']),
         ]);
-
+    
         // Redirect with success message
         return redirect()->back()->with('success', 'User created successfully!');
     }
-
+    
     // Fetch all users for DataTables
     public function view_all_user(Request $request)
     {

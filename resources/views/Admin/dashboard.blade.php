@@ -47,8 +47,7 @@
                                 data-kt-swapper-parent="{default: '#kt_docs_content_container', 'lg': '#kt_docs_header_title'}">
                                 <!--begin::Title-->
                                 <h1 class="d-flex align-items-center text-dark my-1 fs-4">Documentation
-                                    <a href="../../demo1/dist/documentation/getting-started/changelog.html"
-                                        class="badge fw-bold fs-9 px-2 ms-2 badge-white text-hover-primary shadow-sm">v8.0.38</a>
+                                    
                                 </h1>
                                 <!--end::Title-->
                                 <!--begin::Separator-->
