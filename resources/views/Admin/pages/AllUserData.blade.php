@@ -305,6 +305,21 @@
                             {{-- <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span> --}}
                         </h3>
                         <div class="card-toolbar">
+                            <a data-bs-toggle="modal" data-bs-target="#insertModal" class="btn btn-sm btn-light-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2"
+                                            rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor">
+                                        </rect>
+                                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
+                                            fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->New Member</a>
+                        </div>
+                        <div class="card-toolbar">
                             <div class="d-flex align-items-center position-relative my-1">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                 <span class="svg-icon svg-icon-3 position-absolute ms-3">
@@ -340,6 +355,7 @@
                                         <th class="p-0 min-w-150px">Name</th>
                                         <th class="p-0 min-w-200px">Email</th>
                                         <th class="p-0 min-w-150px">Phone</th>
+                                        <th class="p-0 min-w-100px">Image</th>
                                         <th class="p-0 min-w-100px ">Actions</th>
                                     </tr>
                                 </thead>
@@ -361,10 +377,11 @@
         <!--end::Post-->
     </div>
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-sm " style="max-width: 50%; ">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true" enctype="multipart/form-data">
+        <div class="modal-dialog modal-sm" style="max-width: 50%;">
             <div class="modal-content">
                 <form id="updateForm">
+                    @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Edit User</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -373,31 +390,33 @@
                         <!-- Hidden input for ID -->
                         <input type="hidden" id="edit_id" name="id">
 
-                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                        <!-- Name Field -->
+                        <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Name</span>
-                                <span class="ms-1" data-bs-toggle="tooltip"
-                                    aria-label="Specify a target name for future usage and reference"
-                                    data-bs-original-title="Specify a target name for future usage and reference"
-                                    data-kt-initialized="1">
-                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span
-                                            class="path1"></span><span class="path2"></span><span
-                                            class="path3"></span></i>
-                                </span>
                             </label>
                             <input type="text" class="form-control form-control-solid" placeholder="Enter Your Name"
                                 id="edit_name" name="name" required>
                         </div>
 
-                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                        <!-- Email Field -->
+                        <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Email</span>
                             </label>
                             <input type="email" class="form-control form-control-solid" placeholder="Enter Your Email"
                                 id="edit_email" name="email" required>
                         </div>
+                        <div class="d-flex flex-column mb-8 fv-row">
+                            <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                                <span class="required">Image</span>
+                            </label>
+                            <input type="file" class="form-control form-control-solid" id="edit_image"
+                                name="image">
+                        </div>
 
-                        <div class="d-flex flex-column mb-8 fv-row fv-plugins-icon-container">
+                        <!-- Phone Field -->
+                        <div class="d-flex flex-column mb-8 fv-row">
                             <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                 <span class="required">Phone</span>
                             </label>
@@ -414,10 +433,140 @@
         </div>
     </div>
 
+
+    {{-- insert New member --}}
+    <div class="modal fade" id="insertModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm " style="max-width: 50%; ">
+            <div class="modal-content">
+                <form id="insertForm" enctype="multipart/form-data"
+                    class="form fv-plugins-bootstrap5 fv-plugins-framework">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">New User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!--begin::Card body-->
+                    @csrf
+                    <div class="card-body p-9">
+                        <!--begin::Row-->
+
+                        <!--end::Row-->
+                        <!--begin::Row-->
+                        <div class="row mb-8">
+                            <!--begin::Col-->
+                            <div class="col-xl-3">
+                                <div for="name" class="fs-6 fw-bold mt-2 mb-3">Name</div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="text" name="name" id="name" placeholder="Enter Your Name"
+                                    class="form-control form-control-solid @error('name') is-invalid @enderror"value="{{ old('name') }}">
+                                @error('name')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                        <!--begin::Row-->
+                        <div class="row mb-8">
+                            <!--begin::Col-->
+                            <div class="col-xl-3">
+                                <div for="email" class="fs-6 fw-bold mt-2 mb-3">Email</div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="email" name="email" id="email" placeholder="Enter Your Email"
+                                    class="form-control form-control-solid @error('email') is-invalid @enderror"
+                                    value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-8">
+                            <div class="col-xl-3">
+                                <div for="image" class="fs-6 fw-bold mt-2 mb-3">Profile Image</div>
+                            </div>
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="file" name="image" id="image"
+                                    class="form-control form-control-solid @error('image') is-invalid @enderror">
+                                @error('image')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-8">
+                            <!--begin::Col-->
+                            <div class="col-xl-3">
+                                <div for="phone" class="fs-6 fw-bold mt-2 mb-3">Mobile Number</div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="text" name="phone" id="phone"
+                                    placeholder="Enter Your Mobie Number"
+                                    class="form-control form-control-solid @error('phone') is-invalid @enderror"
+                                    value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                        <!--begin::Row-->
+                        <div class="row mb-8">
+                            <!--begin::Col-->
+                            <div class="col-xl-3">
+                                <div for="password" class="fs-6 fw-bold mt-2 mb-3">Password</div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="password" name="password" id="password" placeholder="Enter Your Password"
+                                    class="form-control form-control-solid @error('password') is-invalid @enderror"
+                                    value="{{ old('password') }}">
+                                @error('password')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-8">
+                            <!--begin::Col-->
+                            <div class="col-xl-3">
+                                <div for="password_confirmation" class="fs-6 fw-bold mt-2 mb-3">Confirm Password</div>
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-xl-9 fv-row fv-plugins-icon-container">
+                                <input type="password" name="password_confirmation"
+                                    placeholder="Enter Your Confirm Password" id="password_confirmation"
+                                    class="form-control form-control-solid @error('password_confirmation') is-invalid @enderror"
+                                    value="{{ old('password_confirmation') }}">
+                                @error('password_confirmation')
+                                    <div class="fv-plugins-message-container invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Card body-->
+                    <!--begin::Card footer-->
+                    <div class="card-footer d-flex justify-content-end py-6 px-9">
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 @endsection
 @push('js')
-    <!-- Include SweetAlert2 for confirmation popup -->
-
     <script>
         $(document).ready(function() {
             // Initialize DataTable
@@ -438,6 +587,20 @@
                         data: 'phone'
                     },
                     {
+                        data: 'image',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            if (data) {
+                                return '<img src="' + '{{ asset('storage/') }}' + '/' + data +
+                                    '" alt="Profile Image" class="img-thumbnail" style="width: 50px; height: 50px;">';
+                            } else {
+                                return '<img src="/default-image.jpg" alt="Default Image" class="img-thumbnail" style="width: 50px; height: 50px;">';
+                            }
+
+                        }
+                    },
+                    {
                         data: 'action',
                         orderable: false,
                         searchable: false
@@ -456,8 +619,62 @@
             });
 
 
+            // Search functionality
             $('#search').on('keyup', function() {
                 table.search(this.value).draw();
+            });
+
+            // Insert user
+            $('#insertForm').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                // Create a FormData object to handle the image and other form data
+                var formData = new FormData(this);
+
+                // Send AJAX request
+                $.ajax({
+                    url: '{{ route('users.create') }}', // Laravel route for user creation
+                    method: 'POST',
+                    data: formData, // Send the FormData object
+                    contentType: false, // Don't set content type for FormData
+                    processData: false, // Prevent jQuery from automatically transforming the data
+                    success: function(response) {
+                        if (response.success) {
+                            // SweetAlert success message
+                            Swal.fire('Success!', response.message, 'success');
+
+                            // Close modal
+                            $('#insertModal').modal('hide');
+
+                            // Clear form inputs
+                            $('#insertForm')[0].reset();
+
+                            // Reload DataTable
+                            table.ajax.reload();
+                        } else {
+                            // Handle server-side validation errors (if any)
+                            Swal.fire('Error!', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr) {
+                        // Handle validation errors returned by Laravel
+                        if (xhr.status === 422) { // HTTP 422 means validation failed
+                            var errors = xhr.responseJSON.errors;
+                            var errorMessage = '';
+
+                            // Loop through each error and concatenate messages
+                            $.each(errors, function(key, value) {
+                                errorMessage += value + '<br>';
+                            });
+
+                            // Show validation errors in SweetAlert
+                            Swal.fire('Validation Error!', errorMessage, 'error');
+                        } else {
+                            Swal.fire('Error!', 'Something went wrong. Please try again.',
+                                'error');
+                        }
+                    }
+                });
             });
 
 
@@ -468,13 +685,10 @@
                     url: '/users/edit/' + userId, // Backend endpoint for fetching user data
                     method: 'GET',
                     success: function(response) {
-                        // Assuming response is an object with properties: id, name, email, and phone
                         $('#edit_id').val(response.id); // Correct ID for hidden input
                         $('#edit_name').val(response.name);
                         $('#edit_email').val(response.email);
                         $('#edit_phone').val(response.phone);
-
-                        // Show the modal
                         $('#editModal').modal('show');
                     },
                     error: function() {
@@ -483,28 +697,57 @@
                 });
             });
 
-
             // Update user
-            $('#editForm').on('submit', function(e) {
-                e.preventDefault();
-                var userId = $('#userId').val();
+            $('#updateForm').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                var userId = $('#edit_id').val(); // Get user ID from hidden input field
+
+                // Create FormData object for handling file uploads
+                var formData = new FormData(this);
+
                 $.ajax({
-                    url: '/users/update/' + userId,
+                    url: '/users/update/' + userId, // Laravel route for updating user
                     method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        name: $('#name').val(),
-                        email: $('#email').val(),
-                        phone: $('#phone').val()
-                    },
+                    data: formData,
+                    contentType: false, // Don't set content type for FormData
+                    processData: false, // Prevent jQuery from automatically transforming the data
                     success: function(response) {
                         if (response.success) {
-                            Swal.fire('Updated!', response.message, 'success');
+                            // SweetAlert success message
+                            Swal.fire({
+                                title: 'Updated!',
+                                text: response.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+
+                            // Reload DataTable to reflect changes
                             table.ajax.reload();
+
+                            // Close modal
                             $('#editModal').modal('hide');
+
+                            // Optionally clear the form fields
+                            $('#updateForm')[0].reset();
                         } else {
-                            Swal.fire('Error!', response.message, 'error');
+                            // SweetAlert error message for server-side error
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.message,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         }
+                    },
+                    error: function(xhr) {
+                        // General error
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Something went wrong. Please try again.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
                     }
                 });
             });

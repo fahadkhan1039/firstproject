@@ -5,42 +5,58 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    // Method to handle user creation
     public function data(Request $request)
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|digits:11', // Removed 'unique:users,phone'
+            'phone' => 'required|digits:11',
             'password' => 'required|confirmed|min:8',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',  // Image validation
         ], [
             'name.required' => 'Name is required.',
             'email.unique' => 'This email is already in use.',
             'phone.digits' => 'Phone number must be exactly 11 digits.',
             'password.confirmed' => 'Passwords do not match.',
+            'image.image' => 'The image must be a valid image file.',
+            'image.max' => 'The image size must not exceed 2MB.',
         ]);
-    
+
+        // Handle the image upload if present
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public'); // Save image in public/images folder
+        } else {
+            $imagePath = null; // If no image, set it to null
+        }
+
         // Create a new user record
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'phone' => $validatedData['phone'],
-            'password' => bcrypt($validatedData['password']),
+            'password' => Hash::make($validatedData['password']),
+            'image' => $imagePath, // Store image path in database
         ]);
-    
-        // Redirect with success message
-        return redirect()->back()->with('success', 'User created successfully!');
+
+        // Return JSON response for AJAX requests
+        return response()->json([
+            'success' => true,
+            'message' => 'User created successfully!',
+        ], 200);
     }
-    
+
+
     // Fetch all users for DataTables
     public function view_all_user(Request $request)
     {
         if ($request->ajax()) {
-            $users = User::select(['id', 'name', 'email', 'phone']);
+            $users = User::select(['id', 'name', 'email','image', 'phone']);
             return DataTables::of($users)
                 ->addColumn('action', function ($row) {
                     // Define the URLs for edit and delete actions
@@ -82,36 +98,56 @@ class UserController extends Controller
     }
 
     // Update user data
+
     public function update(Request $request, $id)
     {
-        try {
-            // Validate the incoming request data
-            $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|unique:users,email,' . $id,
-                'phone' => 'required|digits:11|unique:users,phone,' . $id,
-                'password' => 'nullable|confirmed|min:8',
-            ]);
-
-            $user = User::findOrFail($id);
-            $user->name = $validatedData['name'];
-            $user->email = $validatedData['email'];
-            $user->phone = $validatedData['phone'];
-
-            // Update password if provided
-            if ($request->filled('password')) {
-                $user->password = bcrypt($validatedData['password']);
-            }
-
-            $user->save();
-
-            return response()->json(['success' => true, 'message' => 'User updated successfully']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Error updating user']);
+        // Find the user or return an error response if not found
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['success' => false, 'message' => 'User not found']);
         }
+
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|unique:users,email,' . $id,
+            'phone' => 'nullable|string',
+            'password' => 'nullable|confirmed|min:8',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048', // Image validation
+        ]);
+
+        // Update only the fields that were provided in the request
+        if ($request->has('name')) {
+            $user->name = $request->input('name');
+        }
+        if ($request->has('email')) {
+            $user->email = $request->input('email');
+        }
+        if ($request->has('phone')) {
+            $user->phone = $request->input('phone');
+        }
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        // Handle image upload if present
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            // If an image already exists, delete it before storing the new one
+            if ($user->image && file_exists(public_path('storage/' . $user->image))) {
+                unlink(public_path('storage/' . $user->image));
+            }
+            $user->image = $imagePath; // Store the new image path
+        }
+
+        // Save the user data
+        $user->save();
+
+        // Return success response
+        return response()->json(['success' => true, 'message' => 'User updated successfully']);
     }
 
-    // Delete user data
+    //  Delete user data
     public function delete($id)
     {
         try {
